@@ -1,36 +1,90 @@
 # ENCRIPTACIÓN Y FUNCIONES HASH
 
-## Introducción
+## Historia de la Encriptación
 
-La encriptación y las funciones hash son componentes fundamentales de la seguridad informática y la criptografía moderna. Estos mecanismos permiten proteger la información sensible, verificar la integridad de los datos y autenticar usuarios y sistemas en entornos digitales.
+La encriptación tiene una historia milenaria que se remonta a las antiguas civilizaciones. A lo largo del tiempo, ha evolucionado desde métodos simples hasta complejos algoritmos matemáticos:
 
-## ¿Qué es la Encriptación?
+### Antigüedad y Edad Media
+- **Cifrado por sustitución (Siglo V a.C.)**: Los espartanos utilizaban el "escítalo", un bastón alrededor del cual se enrollaba una tira de cuero con un mensaje.
+- **Cifrado César (Siglo I a.C.)**: Julio César utilizaba un sistema simple donde cada letra se reemplazaba por otra situada un número fijo de posiciones más adelante en el alfabeto.
+- **Cifrado de Al-Kindi (Siglo IX)**: El matemático árabe Al-Kindi desarrolló técnicas de criptoanálisis y escribió el "Manuscrito para Descifrar Mensajes Criptográficos".
+- **Disco de Alberti (Siglo XV)**: Leon Battista Alberti inventó el primer sistema polialfabético, considerado el padre de la criptografía occidental.
 
-La encriptación es el proceso de convertir información legible (texto plano) en un formato codificado e ilegible (texto cifrado) utilizando algoritmos matemáticos y claves. El propósito principal es proteger la confidencialidad de la información, asegurando que solo las personas autorizadas con la clave correcta puedan acceder a los datos originales.
+### Era Moderna
+- **Máquina Enigma (1918-1945)**: Utilizada por los alemanes durante la Segunda Guerra Mundial, representó un avance significativo en la complejidad de la encriptación.
+- **Desarrollo de DES (1975)**: El Data Encryption Standard fue el primer estándar de encriptación ampliamente adoptado para uso comercial.
+- **Invención de RSA (1977)**: Rivest, Shamir y Adleman desarrollaron el primer algoritmo práctico de clave pública, revolucionando la criptografía.
+- **Adopción de AES (2001)**: El Advanced Encryption Standard reemplazó a DES como el estándar de encriptación simétrica.
+- **Encriptación Post-Cuántica (Actualidad)**: Desarrollo de algoritmos resistentes a ataques de computadoras cuánticas.
 
-### Tipos de Encriptación
+## Tipos de Encriptación: Origen, Problemas que Resuelven y Ejemplos
 
-1. **Encriptación Simétrica**:
-   - Utiliza la misma clave para cifrar y descifrar la información
-   - Ejemplos: AES (Advanced Encryption Standard), DES (Data Encryption Standard), 3DES
-   - Ventajas: Rápida y eficiente para grandes volúmenes de datos
-   - Desventajas: El intercambio seguro de claves puede ser problemático
+### 1. Encriptación Simétrica
 
-2. **Encriptación Asimétrica (o de Clave Pública)**:
-   - Utiliza un par de claves: una pública (para cifrar) y una privada (para descifrar)
-   - Ejemplos: RSA, ECC (Elliptic Curve Cryptography), DSA (Digital Signature Algorithm)
-   - Ventajas: Resuelve el problema del intercambio de claves, permite firmas digitales
-   - Desventajas: Computacionalmente más costosa que la encriptación simétrica
+**Origen**: Surgió como el primer tipo de encriptación formal. Los métodos simétricos han existido desde la antigüedad, pero se formalizaron matemáticamente en el siglo XX.
 
-3. **Encriptación Híbrida**:
-   - Combina las ventajas de la encriptación simétrica y asimétrica
-   - Utiliza encriptación asimétrica para intercambiar una clave simétrica temporal
-   - La clave simétrica se usa para cifrar el mensaje real
-   - Ejemplos: TLS/SSL (usado en HTTPS), PGP (Pretty Good Privacy)
+**Problemas que resuelve**:
+- Protección de la confidencialidad de datos en reposo y en tránsito
+- Encriptación eficiente de grandes volúmenes de datos
+- Necesidad de procesamiento rápido en sistemas con recursos limitados
+
+**Por qué surgió**:
+La necesidad de comunicaciones secretas, especialmente en contextos militares y diplomáticos, impulsó el desarrollo de estos métodos. Durante la era de la computación, se necesitaban algoritmos estandarizados que pudieran implementarse en hardware y software.
+
+**Ejemplos**:
+- **DES (Data Encryption Standard)**: Desarrollado en los años 70, fue el primer estándar ampliamente adoptado. Utilizaba una clave de 56 bits, que eventualmente se volvió vulnerable a ataques de fuerza bruta.
+- **3DES (Triple DES)**: Surgió como solución temporal a las debilidades de DES, aplicando el algoritmo tres veces con diferentes claves.
+- **AES (Advanced Encryption Standard)**: Desarrollado para reemplazar a DES, utiliza claves de 128, 192 o 256 bits y es actualmente el estándar más utilizado globalmente.
+- **Blowfish y Twofish**: Alternativas a AES, diseñadas para ser eficientes y seguras en diversas plataformas.
+
+### 2. Encriptación Asimétrica (o de Clave Pública)
+
+**Origen**: Surgió en la década de 1970 como respuesta a las limitaciones de la encriptación simétrica, particularmente el problema del intercambio seguro de claves.
+
+**Problemas que resuelve**:
+- El problema del intercambio de claves: permite a partes que nunca se han comunicado antes establecer un canal seguro
+- Posibilita las firmas digitales, proporcionando autenticidad e integridad
+- Permite la no repudiación en comunicaciones digitales
+- Facilita la autenticación sin compartir secretos
+
+**Por qué surgió**:
+Con el aumento de las redes de computadoras, surgió la necesidad de establecer comunicaciones seguras entre partes que nunca habían tenido contacto previo. La encriptación simétrica requería un canal seguro preexistente para intercambiar claves, creando un círculo vicioso.
+
+**Ejemplos**:
+- **RSA**: Nombrado por sus creadores (Rivest, Shamir, Adleman), se basa en la dificultad de factorizar números grandes. Es el algoritmo asimétrico más utilizado históricamente.
+- **ECC (Elliptic Curve Cryptography)**: Ofrece la misma seguridad que RSA con claves más pequeñas, haciéndolo ideal para dispositivos con recursos limitados.
+- **DSA (Digital Signature Algorithm)**: Diseñado específicamente para firmas digitales, no para encriptación.
+- **ElGamal**: Basado en el problema del logaritmo discreto, utilizado tanto para encriptación como para firmas digitales.
+
+### 3. Encriptación Híbrida
+
+**Origen**: Surgió como una solución práctica para combinar las ventajas de los sistemas simétricos y asimétricos, eliminando sus respectivas desventajas.
+
+**Problemas que resuelve**:
+- La ineficiencia de la encriptación asimétrica para grandes volúmenes de datos
+- El problema del intercambio de claves de la encriptación simétrica
+- La necesidad de sistemas prácticos y eficientes para comunicaciones seguras a gran escala
+
+**Por qué surgió**:
+A medida que las aplicaciones de seguridad se volvieron más complejas, se hizo evidente que ningún sistema por sí solo era óptimo. La encriptación asimétrica es demasiado lenta para grandes volúmenes de datos, mientras que la simétrica tiene problemas con la distribución de claves.
+
+**Ejemplos**:
+- **TLS/SSL**: Utilizado en HTTPS para asegurar las comunicaciones web, utiliza RSA o ECC para intercambiar una clave simétrica, que luego se utiliza con AES para la comunicación.
+- **PGP (Pretty Good Privacy)**: Utilizado para correo electrónico seguro, combina RSA para el intercambio de claves con algoritmos simétricos para el cifrado de mensajes.
+- **Signal Protocol**: Utilizado en aplicaciones de mensajería como WhatsApp y Signal, combina encriptación asimétrica para establecer claves y simétrica para las comunicaciones continuas.
 
 ## ¿Qué son las Funciones Hash?
 
 Una función hash es un algoritmo matemático que transforma datos de entrada de longitud variable en una cadena de salida de longitud fija, conocida como "hash", "digest" o "huella digital". A diferencia de la encriptación, el proceso de hash es unidireccional, lo que significa que no está diseñado para ser revertido.
+
+### Historia y Evolución de las Funciones Hash
+
+- **1950s-1960s**: Primeras funciones hash para verificación de datos y tablas hash en computación.
+- **1979**: Primeras funciones hash criptográficas formales por Rabin y Merkle.
+- **1991**: MD5 desarrollado por Ron Rivest, ampliamente utilizado hasta que se encontraron vulnerabilidades.
+- **1993-1995**: SHA (Secure Hash Algorithm) desarrollado por la NSA.
+- **2002-2005**: Descubrimiento de colisiones en MD5 y SHA-1, impulsando el desarrollo de algoritmos más seguros.
+- **2012**: Adopción de SHA-3 (basado en Keccak) como nuevo estándar.
 
 ### Características de las Funciones Hash
 
