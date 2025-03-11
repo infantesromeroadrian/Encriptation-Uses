@@ -1,0 +1,100 @@
+# ENCRIPTACIÓN Y FUNCIONES HASH
+
+## Introducción
+
+La encriptación y las funciones hash son componentes fundamentales de la seguridad informática y la criptografía moderna. Estos mecanismos permiten proteger la información sensible, verificar la integridad de los datos y autenticar usuarios y sistemas en entornos digitales.
+
+## ¿Qué es la Encriptación?
+
+La encriptación es el proceso de convertir información legible (texto plano) en un formato codificado e ilegible (texto cifrado) utilizando algoritmos matemáticos y claves. El propósito principal es proteger la confidencialidad de la información, asegurando que solo las personas autorizadas con la clave correcta puedan acceder a los datos originales.
+
+### Tipos de Encriptación
+
+1. **Encriptación Simétrica**:
+   - Utiliza la misma clave para cifrar y descifrar la información
+   - Ejemplos: AES (Advanced Encryption Standard), DES (Data Encryption Standard), 3DES
+   - Ventajas: Rápida y eficiente para grandes volúmenes de datos
+   - Desventajas: El intercambio seguro de claves puede ser problemático
+
+2. **Encriptación Asimétrica (o de Clave Pública)**:
+   - Utiliza un par de claves: una pública (para cifrar) y una privada (para descifrar)
+   - Ejemplos: RSA, ECC (Elliptic Curve Cryptography), DSA (Digital Signature Algorithm)
+   - Ventajas: Resuelve el problema del intercambio de claves, permite firmas digitales
+   - Desventajas: Computacionalmente más costosa que la encriptación simétrica
+
+3. **Encriptación Híbrida**:
+   - Combina las ventajas de la encriptación simétrica y asimétrica
+   - Utiliza encriptación asimétrica para intercambiar una clave simétrica temporal
+   - La clave simétrica se usa para cifrar el mensaje real
+   - Ejemplos: TLS/SSL (usado en HTTPS), PGP (Pretty Good Privacy)
+
+## ¿Qué son las Funciones Hash?
+
+Una función hash es un algoritmo matemático que transforma datos de entrada de longitud variable en una cadena de salida de longitud fija, conocida como "hash", "digest" o "huella digital". A diferencia de la encriptación, el proceso de hash es unidireccional, lo que significa que no está diseñado para ser revertido.
+
+### Características de las Funciones Hash
+
+1. **Determinismo**: La misma entrada siempre produce el mismo hash de salida
+2. **Unidireccionalidad**: Es computacionalmente inviable recuperar los datos originales a partir del hash
+3. **Efecto avalancha**: Un pequeño cambio en la entrada produce un cambio significativo en la salida
+4. **Resistencia a colisiones**: Es difícil encontrar dos entradas diferentes que produzcan el mismo hash
+5. **Distribución uniforme**: Los valores hash se distribuyen uniformemente en el espacio de salida
+
+### Aplicaciones de las Funciones Hash
+
+1. **Verificación de integridad**: Detectar si un archivo o mensaje ha sido modificado
+2. **Almacenamiento seguro de contraseñas**: Las contraseñas se almacenan como hashes, no en texto plano
+3. **Firmas digitales**: Verificar la autenticidad e integridad de mensajes y documentos
+4. **Estructuras de datos**: Tablas hash, árboles Merkle, etc.
+5. **Blockchain y criptomonedas**: Prueba de trabajo, encadenamiento de bloques
+
+### Algoritmos Hash Comunes
+
+1. **MD5 (Message Digest Algorithm 5)**:
+   - Produce un hash de 128 bits
+   - Ya no se considera seguro para aplicaciones criptográficas debido a vulnerabilidades
+
+2. **SHA (Secure Hash Algorithm)**:
+   - SHA-1: Produce un hash de 160 bits (considerado inseguro)
+   - SHA-2: Incluye SHA-256 (256 bits) y SHA-512 (512 bits)
+   - SHA-3: El estándar más reciente, basado en el algoritmo Keccak
+
+3. **BLAKE2**:
+   - Más rápido que MD5, SHA-1, SHA-2 y SHA-3
+   - Optimizado para plataformas de 64 bits
+
+4. **bcrypt, scrypt, Argon2**:
+   - Funciones hash diseñadas específicamente para contraseñas
+   - Incluyen "salt" y son deliberadamente lentas para dificultar ataques de fuerza bruta
+
+## Diferencias entre Encriptación y Hash
+
+| Característica | Encriptación | Hash |
+|----------------|--------------|------|
+| Reversibilidad | Reversible con la clave correcta | No reversible |
+| Propósito principal | Confidencialidad | Integridad y autenticación |
+| Tamaño de salida | Variable o proporcional a la entrada | Fijo |
+| Uso de claves | Requiere claves | No requiere claves (aunque puede usar "salt") |
+| Aplicaciones típicas | Comunicaciones seguras, almacenamiento de datos | Verificación de integridad, almacenamiento de contraseñas |
+
+## Importancia en la Seguridad Informática
+
+La encriptación y las funciones hash son pilares fundamentales de la seguridad informática moderna. Juntas, proporcionan:
+
+1. **Confidencialidad**: Protección de datos sensibles contra accesos no autorizados
+2. **Integridad**: Garantía de que los datos no han sido alterados
+3. **Autenticación**: Verificación de la identidad de usuarios y sistemas
+4. **No repudio**: Evidencia de que una acción fue realizada por un usuario específico
+
+En el mundo actual, donde las amenazas cibernéticas son cada vez más sofisticadas, comprender y aplicar correctamente estos conceptos es esencial para desarrollar sistemas seguros y proteger la información sensible.
+
+## Consideraciones Éticas y Legales
+
+El uso de encriptación y técnicas criptográficas está sujeto a regulaciones en muchos países. Algunos aspectos a considerar:
+
+1. **Exportación de tecnología criptográfica**: Restricciones en ciertos países
+2. **Acceso gubernamental**: Debates sobre "puertas traseras" y acceso a datos encriptados
+3. **Uso dual**: La misma tecnología que protege datos legítimos puede ser usada por actores maliciosos
+4. **Privacidad vs. Seguridad**: El equilibrio entre la privacidad individual y la seguridad nacional
+
+Es importante mantenerse informado sobre las leyes y regulaciones aplicables al desarrollar o implementar soluciones que utilicen encriptación o funciones hash. 
